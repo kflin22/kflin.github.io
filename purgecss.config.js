@@ -23,5 +23,7 @@ module.exports = {
     // and page chrome (scroll-progress bar, ToC) bleeds through a zoomed image.
     "medium-zoom-overlay",
     "medium-zoom-image--opened",
+    // The Dimensions script injects the legend after page load.
+    "__dimensions_Badge_stat_group_cr",
   ],
 };
