@@ -47,6 +47,21 @@ html[data-theme="dark"] {
   color: var(--site-active-nav-text);
 }
 
+.site-name {
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  font-family: Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.site-name-zh {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.1em;
+  font-size: 0.82em;
+  line-height: 1.25;
+}
+
 #bibsearch {
   border-color: var(--global-text-color-light);
   background-color: var(--global-card-bg-color);

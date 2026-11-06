@@ -4,6 +4,10 @@ title: About
 permalink: /
 subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
+chinese_name:
+  family: 林
+  given: 凯风
+
 profile:
   align: right
   image: prof_pic.jpg
