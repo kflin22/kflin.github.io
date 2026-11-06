@@ -4,7 +4,7 @@
 
 // Load the core theme before applying the site's palette.
 @use "variables" with (
-  $max-content-width: {{ site.max_width }}
+  $max-content-width: {{ site.max_width | default: "930px" }}
 );
 @use "themes";
 @use "layout";
@@ -18,67 +18,4 @@
 @use "tabs";
 @use "teachings";
 @use "typograms";
-
-:root {
-  --global-bg-color: #f4f2f3;
-  --global-card-bg-color: #fcfafb;
-  --global-text-color: #26332e;
-  --global-text-color-light: #52635b;
-  --global-theme-color: #40594b;
-  --global-hover-color: #304638;
-  --global-hover-text-color: #ffffff;
-  --global-divider-color: #94a7ae;
-  --global-code-bg-color: #e9dfe7;
-  --global-footer-bg-color: #64766a;
-  --global-footer-text-color: #ffffff;
-  --global-footer-link-color: #ffffff;
-  --global-back-to-top-bg-color: #40594b;
-  --global-back-to-top-text-color: #ffffff;
-  --site-active-nav-bg: #c0a9bd;
-  --site-active-nav-text: #26332e;
-}
-
-// Dark colors adapted from the Nord palette.
-html[data-theme="dark"] {
-  --global-bg-color: #2e3440;
-  --global-card-bg-color: #3b4252;
-  --global-text-color: #eceff4;
-  --global-text-color-light: #b8c2d2;
-  --global-theme-color: #8fbcbb;
-  --global-hover-color: #acd1d0;
-  --global-hover-text-color: #252b35;
-  --global-divider-color: #4c566a;
-  --global-code-bg-color: #434c5e;
-  --global-footer-bg-color: #252b35;
-  --global-footer-text-color: #e5e9f0;
-  --global-footer-link-color: #8fbcbb;
-  --global-back-to-top-bg-color: #3b4252;
-  --global-back-to-top-text-color: #eceff4;
-  --site-active-nav-bg: #b48ead;
-  --site-active-nav-text: #252b35;
-}
-
-#navbar {
-  background-color: var(--global-card-bg-color);
-}
-
-#navbar .nav-item.active > .nav-link {
-  border-radius: 0.375rem;
-  background-color: var(--site-active-nav-bg);
-  color: var(--site-active-nav-text);
-}
-
-#bibsearch {
-  background-color: var(--global-card-bg-color);
-  color: var(--global-text-color);
-}
-
-#bibsearch::placeholder {
-  color: var(--global-text-color-light);
-  opacity: 1;
-}
-
-// Venue metadata can supply an inline color, so normalize badges to the palette.
-.publications .abbr abbr {
-  background-color: var(--global-theme-color) !important;
-}
+@use "site-palette";
