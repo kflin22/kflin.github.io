@@ -37,7 +37,11 @@
     </div>
     <div class="periodical">
       {% if entry.journal %}<em>{{ entry.journal | escape }}</em>,{% endif %}
-      {{ entry.month | escape }} {{ entry.year | escape }}
+      {% if entry.date %}
+        {{ entry.date | date: '%B %Y' }}
+      {% else %}
+        {{ entry.month | capitalize | escape }} {{ entry.year | escape }}
+      {% endif %}
     </div>
     {% if site.enable_publication_badges.dimensions and entry.dimensions == 'true' and entry.doi %}
       <div class="badges">
