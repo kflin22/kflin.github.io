@@ -317,6 +317,11 @@ html[data-theme="dark"] {
   object-fit: fill;
 }
 
+.site-paper-thumbnail-square img {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
 .site-paper-author {
   white-space: nowrap;
 }
