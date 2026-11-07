@@ -48,18 +48,13 @@ html[data-theme="dark"] {
 }
 
 .site-name {
-  display: grid;
-  width: fit-content;
-  max-width: 100%;
   font-family: Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(1.5rem, 9vw, 2.5rem);
 }
 
 .site-name-zh {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.1em;
-  font-size: 0.82em;
-  line-height: 1.25;
+  font-size: 0.75em;
+  white-space: nowrap;
 }
 
 #bibsearch {
