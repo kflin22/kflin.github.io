@@ -129,6 +129,47 @@ html[data-theme="dark"] {
   margin-top: 0.3rem;
 }
 
+.site-paper-with-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 23%) minmax(0, 1fr);
+  gap: 1rem 1.5rem;
+  align-items: start;
+}
+
+.site-paper-content {
+  min-width: 0;
+}
+
+.site-paper-thumbnail {
+  figure {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.375rem;
+  }
+}
+
+.site-paper-author {
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  .site-paper-with-preview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-paper-thumbnail {
+    max-width: 17rem;
+  }
+}
+
 .site-paper-files {
   display: inline-flex;
   gap: 0.35rem;

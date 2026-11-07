@@ -1,0 +1,82 @@
+<div
+  class="site-paper{% if page.publication_details and entry.preview %} site-paper-with-preview{% endif %}"
+  id="{{ entry.key | escape }}"
+>
+  {% if page.publication_details and entry.preview %}
+    {% assign preview_path = entry.preview %}
+    {% unless preview_path contains '://' %}
+      {% assign preview_path = preview_path | prepend: '/assets/img/publication_preview/' %}
+    {% endunless %}
+    <div class="site-paper-thumbnail">
+      {%
+        include figure.liquid
+        path=preview_path
+        class="site-paper-preview"
+        sizes="(min-width: 576px) 220px, 100vw"
+        alt=entry.title
+        loading="lazy"
+        cache_bust=true
+      %}
+    </div>
+  {% endif %}
+  <div class="site-paper-content">
+    <div class="title">
+      {% if entry.url %}
+        <a href="{{ entry.url | escape }}">{{ entry.title | escape }}</a>
+      {% else %}
+        {{ entry.title | escape }}
+      {% endif %}
+    </div>
+    {% if page.publication_details %}
+      {% assign equal_contributor_count = entry.equal_contributor_count | default: 0 | plus: 0 %}
+      {% assign corresponding_author_count = entry.corresponding_author_count | default: 0 | plus: 0 %}
+      <div class="author">
+        {% for author in entry.author_array %}
+          <span class="site-paper-author">
+            {{- author.first | escape }}
+            {{ author.last | escape -}}
+            {%- if forloop.index <= equal_contributor_count -%}<sup>#</sup>{%- endif -%}
+            {%- if forloop.rindex <= corresponding_author_count -%}<sup>*</sup>{%- endif -%}
+          </span>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="site-paper-meta">
+      <div class="periodical">
+        {% if entry.journal %}<em>{{ entry.journal | escape }}</em>,{% endif %}
+        {% if entry.date %}
+          {{ entry.date | date: '%B %Y' }}
+        {% else %}
+          {{ entry.month | capitalize | escape }} {{ entry.year | escape }}
+        {% endif %}
+      </div>
+      {% if entry.pdf or entry.supp %}
+        <div class="site-paper-files">
+          {% if entry.pdf %}
+            {% assign pdf_url = entry.pdf %}
+            {% unless pdf_url contains '://' %}
+              {% assign pdf_url = pdf_url | prepend: '/assets/pdf/' | relative_url %}
+            {% endunless %}
+            <a href="{{ pdf_url | escape }}" aria-label="Article PDF" target="_blank" rel="noopener">
+              <i class="fa-regular fa-file-pdf" aria-hidden="true"></i> PDF
+            </a>
+          {% endif %}
+          {% if entry.supp %}
+            {% assign supp_url = entry.supp %}
+            {% unless supp_url contains '://' %}
+              {% assign supp_url = supp_url | prepend: '/assets/pdf/' | relative_url %}
+            {% endunless %}
+            <a href="{{ supp_url | escape }}" aria-label="Supplementary Information" target="_blank" rel="noopener">
+              <i class="fa-solid fa-paperclip" aria-hidden="true"></i> SI
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    {% if site.enable_publication_badges.dimensions and entry.dimensions == 'true' and entry.doi %}
+      <div class="badges">
+        <span class="__dimensions_badge_embed__" data-doi="{{ entry.doi | escape }}" data-style="small_rectangle" data-legend="hover-right"></span>
+      </div>
+    {% endif %}
+  </div>
+</div>
