@@ -56,20 +56,17 @@ html[data-theme="dark"] {
 }
 
 .site-name {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.1em 0.24em;
   font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: clamp(1.5rem, 9vw, 2.5rem);
-  letter-spacing: -0.015em;
 }
 
 .site-name-zh {
-  font-size: 0.8em;
   font-feature-settings: "halt";
-  letter-spacing: 0.015em;
   white-space: nowrap;
+}
+
+.site-name-zh-text {
+  letter-spacing: 0.05em;
 }
 
 #bibsearch {

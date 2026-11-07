@@ -14,7 +14,7 @@ layout: default
       </span>
       {% if page.chinese_name %}
         <span class="site-name-zh" lang="zh-Hans">
-          （{{ page.chinese_name.family | escape }}<span class="font-weight-bold">{{ page.chinese_name.given | escape }}</span>）
+          （<span class="site-name-zh-text">{{ page.chinese_name.family | escape }}<span class="font-weight-bold">{{ page.chinese_name.given | escape }}</span></span>）
         </span>
       {% endif %}
     </h1>
