@@ -55,6 +55,15 @@ html[data-theme="dark"] {
   color: var(--site-active-nav-text);
 }
 
+.home-header {
+  margin-bottom: 2rem;
+}
+
+.advisor-link {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .site-name {
   font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: clamp(1.5rem, 9vw, 2.5rem);
