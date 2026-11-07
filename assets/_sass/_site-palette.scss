@@ -317,8 +317,7 @@ html[data-theme="dark"] {
   object-fit: fill;
 }
 
-.site-paper-thumbnail-square img {
-  aspect-ratio: 1 / 1;
+.site-paper-thumbnail-contain img {
   object-fit: contain;
 }
 
