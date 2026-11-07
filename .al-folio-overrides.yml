@@ -6,7 +6,7 @@ overrides:
     gem_version: 1.0.15
     upstream_path: _includes/selected_papers.liquid
     upstream_sha256: 2ea68b7784ce9638aa1f4f81c4fd2508f05c315bad0cf6c63223fe526de1e364
-    local_sha256: 70850902c2d31632d396410723a2b37a8932cff90c3e28fca42662eb53b75924
+    local_sha256: 284131496386b230cf7054e63bbe645206f0da866dcab3db4668e7915b5b2192
     acknowledged_at: "2026-11-07"
   _layouts/bib.liquid:
     owner: al_folio_core

@@ -1,8 +1,9 @@
+{% assign show_publication_preview = page.publication_details | default: page.selected_papers %}
 <div
-  class="site-paper{% if page.publication_details %} site-paper-detailed{% endif %}"
+  class="site-paper{% if show_publication_preview %} site-paper-detailed{% endif %}"
   id="{{ entry.key | escape }}"
 >
-  {% if page.publication_details and entry.preview %}
+  {% if show_publication_preview and entry.preview %}
     {% assign preview_path = entry.preview %}
     {% unless preview_path contains '://' %}
       {% assign preview_path = preview_path | prepend: '/assets/img/publication_preview/' %}

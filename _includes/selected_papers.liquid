@@ -1,3 +1,10 @@
-<div class="publications">
-  {% bibliography --group_by none --query @*[selected=true]* --template site-publication %}
+<div class="publications selected-publications">
+  <section class="selected-publication-group" aria-labelledby="selected-first-author-heading">
+    <h3 id="selected-first-author-heading">First author</h3>
+    {% bibliography --group_by none --query @*[selected=true,selected_role=first]* --template site-publication %}
+  </section>
+  <section class="selected-publication-group" aria-labelledby="selected-cofirst-author-heading">
+    <h3 id="selected-cofirst-author-heading">Co-first author</h3>
+    {% bibliography --group_by none --query @*[selected=true,selected_role=cofirst]* --template site-publication %}
+  </section>
 </div>

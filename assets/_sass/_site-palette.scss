@@ -98,6 +98,31 @@ html[data-theme="dark"] {
   margin-bottom: 2rem;
 }
 
+.selected-publication-group {
+  margin-top: 1.25rem;
+
+  h3 {
+    margin: 0 0 1.25rem;
+    color: var(--global-text-color-light);
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  ol.bibliography {
+    margin-bottom: 0;
+
+    > li:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  & + .selected-publication-group {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--global-divider-color);
+  }
+}
+
 // Venue metadata can supply an inline color, so normalize badges to the palette.
 .publications ol.bibliography li .abbr abbr {
   background-color: var(--global-theme-color) !important;
