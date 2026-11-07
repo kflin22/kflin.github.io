@@ -94,6 +94,10 @@ html[data-theme="dark"] {
   text-align: left;
 }
 
+.publications ol.bibliography > li {
+  margin-bottom: 2rem;
+}
+
 // Venue metadata can supply an inline color, so normalize badges to the palette.
 .publications ol.bibliography li .abbr abbr {
   background-color: var(--global-theme-color) !important;

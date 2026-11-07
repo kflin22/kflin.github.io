@@ -36,24 +36,35 @@
           {% assign author_name = author.first | append: ' ' | append: author.last %}
           <span class="site-paper-author">
             {%- if author.first == site.first_name and author.last == site.last_name -%}
-              <strong>{{ author.first | escape }} {{ author.last | escape }}</strong>
+              <strong>
+                {{- author.first | escape }}
+                {{ author.last | escape -}}
+              </strong>
             {%- else -%}
               {{- author.first | escape }}
               {{ author.last | escape -}}
             {%- endif -%}
-            {%- if forloop.index <= equal_contributor_count -%}<sup>#</sup>{%- endif -%}
-            {%- if corresponding_authors contains author_name or forloop.rindex <= corresponding_author_count -%}<sup>*</sup>{%- endif -%}
-          </span>{% unless forloop.last %}, {% endunless %}
+            {%- if forloop.index <= equal_contributor_count -%}
+              <sup>#</sup>
+            {%- endif -%}
+            {%- if corresponding_authors contains author_name or forloop.rindex <= corresponding_author_count -%}
+              <sup>*</sup>
+            {%- endif -%}
+          </span>
+          {%- unless forloop.last %}, {% endunless %}
         {% endfor %}
       </div>
     {% endif %}
     <div class="site-paper-meta">
       <div class="periodical">
-        {% if entry.journal %}<em>{{ entry.journal | escape }}</em>,{% endif %}
+        {% if entry.journal -%}
+          <em>{{ entry.journal | escape }}</em>,
+        {%- endif %}
         {% if entry.date %}
           {{ entry.date | date: '%B %Y' }}
         {% else %}
-          {{ entry.month | capitalize | escape }} {{ entry.year | escape }}
+          {{ entry.month | capitalize | escape }}
+          {{ entry.year | escape }}
         {% endif %}
       </div>
       {% if entry.pdf or entry.supp or entry.dimensions == 'true' %}
@@ -88,7 +99,12 @@
           {% endif %}
           {% if site.enable_publication_badges.dimensions and entry.dimensions == 'true' and entry.doi %}
             <div class="badges">
-              <span class="__dimensions_badge_embed__" data-doi="{{ entry.doi | escape }}" data-style="small_rectangle" data-legend="hover-right"></span>
+              <span
+                class="__dimensions_badge_embed__"
+                data-doi="{{ entry.doi | escape }}"
+                data-style="small_rectangle"
+                data-legend="hover-right"
+              ></span>
             </div>
           {% endif %}
         </div>
