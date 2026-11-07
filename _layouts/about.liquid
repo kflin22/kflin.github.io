@@ -34,12 +34,44 @@ layout: default
             </span>
           {% endif %}
         </h1>
+        {% if site.data.socials.email %}
+          <p class="home-email">
+            <a href="mailto:{{ site.data.socials.email | escape }}">{{ site.data.socials.email | escape }}</a>
+          </p>
+        {% endif %}
         {% if page.subtitle %}
           <p class="desc">{{ page.subtitle }}</p>
         {% endif %}
       </header>
 
       <div class="home-biography">{{ content }}</div>
+
+      {% if page.social %}
+        <nav class="home-academic-links" aria-label="Academic profiles">
+          {% if site.data.socials.scholar_userid %}
+            <a
+              href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid | escape }}&amp;hl=zh-CN"
+              aria-label="Google Scholar"
+              title="Google Scholar"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="ai ai-google-scholar" aria-hidden="true"></i>
+            </a>
+          {% endif %}
+          {% if site.data.socials.orcid_id %}
+            <a
+              href="https://orcid.org/{{ site.data.socials.orcid_id | escape }}"
+              aria-label="ORCID"
+              title="ORCID"
+              target="_blank"
+              rel="me noopener"
+            >
+              <i class="ai ai-orcid" aria-hidden="true"></i>
+            </a>
+          {% endif %}
+        </nav>
+      {% endif %}
     </div>
 
     <!-- News -->
@@ -62,15 +94,6 @@ layout: default
     {% if page.selected_papers %}
       <h2>Selected publications</h2>
       {% include selected_papers.liquid %}
-    {% endif %}
-
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}

@@ -12,7 +12,7 @@ profile:
   alt: Kaifeng Lin
 
 selected_papers: true # groups selected papers by selected_role in the bibliography
-social: true # includes social icons at the bottom of the page
+social: true # includes academic profile links below the introduction
 
 announcements:
   enabled: false # includes a list of news items
