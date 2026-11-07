@@ -1,4 +1,20 @@
 @font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-variable-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Noto Sans SC";
   src: url("../fonts/noto-sans-sc-name.woff2") format("woff2");
   font-style: normal;
@@ -7,6 +23,7 @@
 }
 
 :root {
+  --site-font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   --global-bg-color: #f4f2f3;
   --global-card-bg-color: #fcfafb;
   --global-text-color: #26332e;
@@ -23,6 +40,36 @@
   --global-back-to-top-text-color: #ffffff;
   --site-active-nav-bg: #c0a9bd;
   --site-active-nav-text: #26332e;
+}
+
+body {
+  font-family: var(--site-font-family);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  line-height: 1.65;
+}
+
+.post-title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--site-font-family);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.profile .more-info {
+  font-family: var(--site-font-family);
 }
 
 // Dark colors adapted from the Nord palette.
@@ -47,6 +94,14 @@ html[data-theme="dark"] {
 
 #navbar {
   background-color: var(--global-card-bg-color);
+
+  .navbar-brand {
+    font-weight: 700 !important;
+  }
+
+  .nav-link {
+    font-weight: 500;
+  }
 }
 
 #navbar .nav-item.active > .nav-link {
@@ -65,8 +120,10 @@ html[data-theme="dark"] {
 }
 
 .site-name {
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: var(--site-font-family);
   font-size: clamp(1.5rem, 9vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .site-name-zh {

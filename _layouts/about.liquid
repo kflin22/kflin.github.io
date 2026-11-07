@@ -6,7 +6,8 @@ layout: default
     <h1 class="post-title{% if page.chinese_name %} site-name{% endif %}">
       <span>
         {% if site.title == 'blank' %}
-          <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+          {{ site.first_name }}
+          {{ site.middle_name }}
           {{ site.last_name }}
         {% else %}
           {{ site.title }}
@@ -16,7 +17,7 @@ layout: default
         <span class="site-name-zh" lang="zh-Hans">
           （<span class="site-name-zh-text">
             {{- page.chinese_name.family | escape -}}
-            <span class="font-weight-bold">{{ page.chinese_name.given | escape }}</span></span
+            {{- page.chinese_name.given | escape -}}</span
           >）
         </span>
       {% endif %}
