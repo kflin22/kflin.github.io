@@ -1,6 +1,7 @@
 ---
 layout: about
 title: About
+browser_title: "Kaifeng Lin's Research Website | Kaifeng Lin (林凯风)"
 permalink: /
 
 chinese_name:
