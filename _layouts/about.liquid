@@ -2,56 +2,45 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header home-header">
-    <h1 class="post-title{% if page.chinese_name %} site-name{% endif %}">
-      <span>
-        {% if site.title == 'blank' %}
-          {{ site.first_name }}
-          {{ site.middle_name }}
-          {{ site.last_name }}
-        {% else %}
-          {{ site.title }}
-        {% endif %}
-      </span>
-      {% if page.chinese_name %}
-        <span class="site-name-zh" lang="zh-Hans">
-          （<span class="site-name-zh-text">
-            {{- page.chinese_name.family | escape -}}
-            {{- page.chinese_name.given | escape -}}</span
-          >）
-        </span>
-      {% endif %}
-    </h1>
-    {% if page.subtitle %}
-      <p class="desc">{{ page.subtitle }}</p>
-    {% endif %}
-  </header>
-
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
+    <div class="home-intro{% if page.profile.image %} home-intro-with-portrait{% endif %}">
+      {% if page.profile.image %}
+        <div class="home-portrait">
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
           {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
+            include figure.liquid loading="eager" path=profile_image_path class="home-portrait-image" sizes="(max-width: 767.98px) 104px, 144px"
+            alt=page.profile.alt cache_bust=true
           %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
+        </div>
+      {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+      <header class="post-header home-header">
+        <h1 class="post-title{% if page.chinese_name %} site-name{% endif %}">
+          <span>
+            {% if site.title == 'blank' %}
+              {{ site.first_name }}
+              {{ site.middle_name }}
+              {{ site.last_name }}
+            {% else %}
+              {{ site.title }}
+            {% endif %}
+          </span>
+          {% if page.chinese_name %}
+            <span class="site-name-zh" lang="zh-Hans">
+              （<span class="site-name-zh-text">
+                {{- page.chinese_name.family | escape -}}
+                {{- page.chinese_name.given | escape -}}</span
+              >）
+            </span>
+          {% endif %}
+        </h1>
+        {% if page.subtitle %}
+          <p class="desc">{{ page.subtitle }}</p>
+        {% endif %}
+      </header>
+
+      <div class="home-biography">{{ content }}</div>
+    </div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
