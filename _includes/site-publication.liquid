@@ -1,5 +1,5 @@
 <div
-  class="site-paper{% if page.publication_details and entry.preview %} site-paper-with-preview{% endif %}"
+  class="site-paper{% if page.publication_details %} site-paper-detailed{% endif %}"
   id="{{ entry.key | escape }}"
 >
   {% if page.publication_details and entry.preview %}
@@ -56,33 +56,43 @@
           {{ entry.month | capitalize | escape }} {{ entry.year | escape }}
         {% endif %}
       </div>
-      {% if entry.pdf or entry.supp %}
-        <div class="site-paper-files">
-          {% if entry.pdf %}
-            {% assign pdf_url = entry.pdf %}
-            {% unless pdf_url contains '://' %}
-              {% assign pdf_url = pdf_url | prepend: '/assets/pdf/' | relative_url %}
-            {% endunless %}
-            <a href="{{ pdf_url | escape }}" aria-label="Article PDF" target="_blank" rel="noopener">
-              <i class="fa-regular fa-file-pdf" aria-hidden="true"></i> PDF
-            </a>
+      {% if entry.pdf or entry.supp or entry.dimensions == 'true' %}
+        <div class="site-paper-actions">
+          {% if entry.pdf or entry.supp %}
+            <div class="site-paper-files">
+              {% if entry.pdf %}
+                {% assign pdf_url = entry.pdf %}
+                {% unless pdf_url contains '://' %}
+                  {% assign pdf_url = pdf_url | prepend: '/assets/pdf/' | relative_url %}
+                {% endunless %}
+                <a
+                  href="{{ pdf_url | escape }}"
+                  aria-label="Article PDF"
+                  title="{{ entry.pdf_version | default: 'Article PDF' | escape }}"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-regular fa-file-pdf" aria-hidden="true"></i> PDF
+                </a>
+              {% endif %}
+              {% if entry.supp %}
+                {% assign supp_url = entry.supp %}
+                {% unless supp_url contains '://' %}
+                  {% assign supp_url = supp_url | prepend: '/assets/pdf/' | relative_url %}
+                {% endunless %}
+                <a href="{{ supp_url | escape }}" aria-label="Supplementary Information" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-paperclip" aria-hidden="true"></i> SI
+                </a>
+              {% endif %}
+            </div>
           {% endif %}
-          {% if entry.supp %}
-            {% assign supp_url = entry.supp %}
-            {% unless supp_url contains '://' %}
-              {% assign supp_url = supp_url | prepend: '/assets/pdf/' | relative_url %}
-            {% endunless %}
-            <a href="{{ supp_url | escape }}" aria-label="Supplementary Information" target="_blank" rel="noopener">
-              <i class="fa-solid fa-paperclip" aria-hidden="true"></i> SI
-            </a>
+          {% if site.enable_publication_badges.dimensions and entry.dimensions == 'true' and entry.doi %}
+            <div class="badges">
+              <span class="__dimensions_badge_embed__" data-doi="{{ entry.doi | escape }}" data-style="small_rectangle" data-legend="hover-right"></span>
+            </div>
           {% endif %}
         </div>
       {% endif %}
     </div>
-    {% if site.enable_publication_badges.dimensions and entry.dimensions == 'true' and entry.doi %}
-      <div class="badges">
-        <span class="__dimensions_badge_embed__" data-doi="{{ entry.doi | escape }}" data-style="small_rectangle" data-legend="hover-right"></span>
-      </div>
-    {% endif %}
   </div>
 </div>

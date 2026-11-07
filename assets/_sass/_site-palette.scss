@@ -120,7 +120,8 @@ html[data-theme="dark"] {
   }
 
   .badges {
-    margin-top: 0.45rem;
+    margin: 0;
+    line-height: 1;
   }
 
   // Keep only citation counts in the Dimensions legend.
@@ -137,11 +138,25 @@ html[data-theme="dark"] {
   margin-top: 0.3rem;
 }
 
-.site-paper-with-preview {
+.site-paper-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.publications ol.bibliography li .site-paper .badges {
+  padding-bottom: 0;
+}
+
+.site-paper-detailed {
   display: grid;
   grid-template-columns: minmax(0, 23%) minmax(0, 1fr);
   gap: 1rem 1.5rem;
   align-items: start;
+
+  .site-paper-content {
+    grid-column: 2;
+  }
 }
 
 .site-paper-content {
@@ -169,8 +184,12 @@ html[data-theme="dark"] {
 }
 
 @media (max-width: 575.98px) {
-  .site-paper-with-preview {
+  .site-paper-detailed {
     grid-template-columns: minmax(0, 1fr);
+
+    .site-paper-content {
+      grid-column: 1;
+    }
   }
 
   .site-paper-thumbnail {
