@@ -1,6 +1,6 @@
 ---
 ---
-{% if entry.selected == 'true' %}
+{% if entry.selected == 'true' or entry.site_paper == 'true' %}
   {% include site-publication.liquid %}
 {% else %}
 <div class="row">

@@ -33,8 +33,12 @@
       <div class="author">
         {% for author in entry.author_array %}
           <span class="site-paper-author">
-            {{- author.first | escape }}
-            {{ author.last | escape -}}
+            {%- if author.first == site.first_name and author.last == site.last_name -%}
+              <strong>{{ author.first | escape }} {{ author.last | escape }}</strong>
+            {%- else -%}
+              {{- author.first | escape }}
+              {{ author.last | escape -}}
+            {%- endif -%}
             {%- if forloop.index <= equal_contributor_count -%}<sup>#</sup>{%- endif -%}
             {%- if forloop.rindex <= corresponding_author_count -%}<sup>*</sup>{%- endif -%}
           </span>{% unless forloop.last %}, {% endunless %}

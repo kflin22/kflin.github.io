@@ -105,10 +105,13 @@ html[data-theme="dark"] {
 }
 
 .site-paper {
-  .title a {
-    color: var(--global-theme-color);
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
+  .title {
+    font-weight: 700;
+
+    a {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
   }
 
   .badges {
