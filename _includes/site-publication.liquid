@@ -8,7 +8,7 @@
     {% unless preview_path contains '://' %}
       {% assign preview_path = preview_path | prepend: '/assets/img/publication_preview/' %}
     {% endunless %}
-    <div class="site-paper-thumbnail">
+    <div class="site-paper-thumbnail{% if entry.preview_fit == 'fill' %} site-paper-thumbnail-fill{% endif %}">
       {%
         include figure.liquid
         path=preview_path

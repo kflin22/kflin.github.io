@@ -265,6 +265,10 @@ html[data-theme="dark"] {
   }
 }
 
+.site-paper-thumbnail-fill img {
+  object-fit: fill;
+}
+
 .site-paper-author {
   white-space: nowrap;
 }
