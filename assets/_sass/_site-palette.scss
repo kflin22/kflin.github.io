@@ -91,6 +91,7 @@ html[data-theme="dark"] {
 
 .publications h2.bibliography {
   color: var(--global-text-color-light);
+  text-align: left;
 }
 
 // Venue metadata can supply an inline color, so normalize badges to the palette.
