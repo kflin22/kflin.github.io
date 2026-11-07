@@ -30,8 +30,10 @@
     {% if page.publication_details %}
       {% assign equal_contributor_count = entry.equal_contributor_count | default: 0 | plus: 0 %}
       {% assign corresponding_author_count = entry.corresponding_author_count | default: 0 | plus: 0 %}
+      {% assign corresponding_authors = entry.corresponding_authors | split: '; ' %}
       <div class="author">
         {% for author in entry.author_array %}
+          {% assign author_name = author.first | append: ' ' | append: author.last %}
           <span class="site-paper-author">
             {%- if author.first == site.first_name and author.last == site.last_name -%}
               <strong>{{ author.first | escape }} {{ author.last | escape }}</strong>
@@ -40,7 +42,7 @@
               {{ author.last | escape -}}
             {%- endif -%}
             {%- if forloop.index <= equal_contributor_count -%}<sup>#</sup>{%- endif -%}
-            {%- if forloop.rindex <= corresponding_author_count -%}<sup>*</sup>{%- endif -%}
+            {%- if corresponding_authors contains author_name or forloop.rindex <= corresponding_author_count -%}<sup>*</sup>{%- endif -%}
           </span>{% unless forloop.last %}, {% endunless %}
         {% endfor %}
       </div>
