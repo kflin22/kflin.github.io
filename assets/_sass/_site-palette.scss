@@ -274,6 +274,12 @@ html[data-theme="dark"] {
   ol.bibliography {
     margin-bottom: 0;
 
+    > li:not(:last-child) {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--global-divider-color);
+    }
+
     > li:last-child {
       margin-bottom: 0;
     }
