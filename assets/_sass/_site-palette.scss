@@ -355,6 +355,13 @@ html[data-theme="dark"] {
   min-width: 0;
 }
 
+.site-paper-summary {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
 .site-paper-thumbnail {
   figure {
     margin: 0;

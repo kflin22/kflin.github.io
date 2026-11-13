@@ -114,4 +114,7 @@
       {% endif %}
     </div>
   </div>
+  {% if page.selected_papers and entry.selected_summary %}
+    <p class="site-paper-summary">{{ entry.selected_summary | escape }}</p>
+  {% endif %}
 </div>
